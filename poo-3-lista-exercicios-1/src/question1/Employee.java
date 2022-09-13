@@ -36,6 +36,7 @@ public class Employee {
     }
 
     public void showData () {
-        System.out.println("Funcionário " + this.name + ", de salário R$" + this.salary);
+        System.out.println("Nome: " + this.name);
+        System.out.println("Salário: " + this.salary);
     }
 }

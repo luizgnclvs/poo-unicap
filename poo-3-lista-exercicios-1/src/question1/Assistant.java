@@ -20,6 +20,8 @@ public class Assistant extends Employee {
 
     @Override
     public void showData () {
-        System.out.println("Funcionário " + super.getName() + ", de matrícula " + this.registry + " e salário R$" + super.getSalary());
+        System.out.println("Nome: " + super.getName());
+        System.out.println("Salário: " + super.getSalary());
+        System.out.println(("Matrícula: " + this.registry));
     }
 }
