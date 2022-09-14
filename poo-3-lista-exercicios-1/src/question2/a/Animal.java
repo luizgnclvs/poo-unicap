@@ -1,4 +1,4 @@
-package question2a;
+package question2.a;
 
 public class Animal {
     private String name, breed;
