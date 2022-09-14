@@ -20,6 +20,6 @@ public class VIP extends Ticket {
 
     @Override
     public void printValue () {
-        System.out.printf("O valor do ingresso é R$ %f.2" + (super.getValue() + this.additionalValue));
+        System.out.printf("O valor do ingresso é R$ %,.2f", super.getValue() + this.additionalValue);
     }
 }

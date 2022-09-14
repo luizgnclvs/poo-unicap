@@ -25,7 +25,7 @@ public class Animal {
         this.breed = breed;
     }
 
-    public void walks () {
+    public void walk () {
         System.out.println(this.name + " está caminhando...");
     }
 }

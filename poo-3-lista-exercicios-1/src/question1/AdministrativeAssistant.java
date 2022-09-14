@@ -20,7 +20,7 @@ public class AdministrativeAssistant extends Assistant {
 
     @Override
     public double annualPay () {
-        if (shift == "Noturno") {
+        if (shift.equalsIgnoreCase("noturno")) {
             return super.annualPay() * 1.15; //15% de bônus
         } else {
             return super.annualPay();

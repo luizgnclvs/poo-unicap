@@ -4,7 +4,7 @@ public class TechnicalAssistant extends Assistant {
 
     public TechnicalAssistant () {}
 
-    public TechnicalAssistant (String name, double salary, int registry, double bonus) {
+    public TechnicalAssistant (String name, double salary, int registry) {
         super(name, salary, registry);
     }
 

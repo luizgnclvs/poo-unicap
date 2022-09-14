@@ -9,6 +9,6 @@ public class Poor extends Person {
     }
 
     public void work () {
-        System.out.println(super.getName() + " está trabalbando.");
+        System.out.println(super.getName() + " está trabalhando.");
     }
 }

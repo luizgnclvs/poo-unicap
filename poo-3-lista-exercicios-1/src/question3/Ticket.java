@@ -18,6 +18,6 @@ public class Ticket {
     }
 
     public void printValue () {
-        System.out.printf("O valor do ingresso é R$ %f.2" + this.value);
+        System.out.printf("O valor do ingresso é R$ %,.2f", this.value);
     }
 }
