@@ -92,7 +92,6 @@ public class Test {
 
             int realEstateOption = read.nextInt();
 
-
             while (realEstateOption < 1 || realEstateOption > 2) {
                 System.out.print("\nOpção inválida! Tente novamente: ");
                 realEstateOption = read.nextInt();
