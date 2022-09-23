@@ -2,8 +2,8 @@ package pckg;
 
 import java.util.Scanner;
 
-public class Main {
-    
+public class Application {
+
     public static void main(String[] args) {
         try (Scanner read = new Scanner(System.in)) {
             System.out.println("\nOlá! Seja bem-vindo(a).\n\nVamos iniciar seu cadastro.\nInsira suas informações conforme requisitado.\n");
@@ -25,26 +25,28 @@ public class Main {
             phone.setNumber(read.nextInt());
 
             client.setPhone(phone);
-            Date birthday = new Date();
+
+            Date dateOfBirth = new Date();
 
             System.out.print("\nDATA DE NASCIMENTO\nDia: ");
-            birthday.setDay(read.nextInt());
+            dateOfBirth.setDay(read.nextInt());
             System.out.print("Mês: ");
-            birthday.setMonth(read.nextInt());
+            dateOfBirth.setMonth(read.nextInt());
             System.out.print("Ano: ");
-            birthday.setYear(read.nextInt());
+            dateOfBirth.setYear(read.nextInt());
             read.nextLine();
 
-            client.setBirthday(birthday);
+            client.setDateOfBirth(dateOfBirth);
+
             Address address = new Address();
 
             System.out.print("\nENDEREÇO\nLogradouro: ");
-            address.setName(read.nextLine());
+            address.setStreet(read.nextLine());
             System.out.print("Número: ");
             address.setNumber(read.nextInt());
             read.nextLine();
             System.out.print("Bairro: ");
-            address.setDistrict(read.nextLine());
+            address.setBorough(read.nextLine());
             System.out.print("Cidade: ");
             address.setCity(read.nextLine());
             System.out.print("Estado: ");
@@ -52,11 +54,17 @@ public class Main {
 
             client.setAddress(address);
             
-            System.out.printf("\n\n%s\n%s: %s\n%s: %d\n%s: %d\n\n%s: (%d) %d\n\n%s: %d/%d/%d\n\n%s:\n%s, %d\n%s, %s - %s",
-            "DADOS INSERIDOS", "Nome", client.getName(), "RG", client.getRG(), "CPF", client.getCPF(),
-            "Telefone", client.getPhone().getDDD(), client.getPhone().getNumber(),
-            "Data de Nascimento", client.getBirthday().getDay(), client.getBirthday().getMonth(), client.getBirthday().getYear(),
-            "Endereço", client.getAddress().getName(), client.getAddress().getNumber(), client.getAddress().getDistrict(), client.getAddress().getCity(), client.getAddress().getState());
+            System.out.printf(
+                "\n\n%s\n%s: %s\n%s: %d\n%s: %d\n\n%s: (%d) %d\n\n%s: %d/%d/%d\n\n%s:\n%s, %d\n%s, %s - %s",
+                "DADOS INSERIDOS",
+                "Nome", client.getName(),
+                "RG", client.getRG(),
+                "CPF", client.getCPF(),
+                "Telefone", client.getPhone().getDDD(), client.getPhone().getNumber(),
+                "Data de Nascimento", client.getDateOfBirth().getDay(), client.getDateOfBirth().getMonth(), client.getDateOfBirth().getYear(),
+                "Endereço", client.getAddress().getStreet(), client.getAddress().getNumber(),
+                client.getAddress().getBorough(), client.getAddress().getCity(), client.getAddress().getState()
+            );
         }
     }
 }

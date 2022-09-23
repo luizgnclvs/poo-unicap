@@ -1,25 +1,25 @@
 package pckg;
 
 public class Address {
-    private String name, district, city, state;
+    private String street, borough, city, state;
     private int number;
 
     public Address () {}
 
-    public Address (String name, int number, String district, String city, String state) {
-        this.name = name;
+    public Address (String street, int number, String borough, String city, String state) {
+        this.street = street;
         this.number = number;
-        this.district = district;
+        this.borough = borough;
         this.city = city;
         this.state = state;
     }
 
-    public String getName () {
-        return this.name;
+    public String getStreet () {
+        return this.street;
     }
 
-    public void setName (String name) {
-        this.name = name;
+    public void setStreet (String street) {
+        this.street = street;
     }
     
     public int getNumber () {
@@ -30,12 +30,12 @@ public class Address {
         this.number = number;
     }
 
-    public String getDistrict () {
-        return this.district;
+    public String getBorough () {
+        return this.borough;
     }
 
-    public void setDistrict (String district) {
-        this.district = district;
+    public void setBorough (String borough) {
+        this.borough = borough;
     }
 
     public String getCity () {

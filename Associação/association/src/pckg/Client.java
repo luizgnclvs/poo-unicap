@@ -2,20 +2,20 @@ package pckg;
 
 public class Client {
     private String name;
-    private int rg;
-    private long cpf;
+    private int RG;
+    private long CPF;
     private Phone phone;
-    private Date birthday;
+    private Date dateOfBirth;
     private Address address;
 
     public Client () {}
 
-    public Client (String name, int rg, long cpf, Phone phone, Date birthday, Address address) {
+    public Client (String name, int RG, long CPF, Phone phone, Date dateOfBirth, Address address) {
         this.name = name;
-        this.rg = rg;
-        this.cpf = cpf;
+        this.RG = RG;
+        this.CPF = CPF;
         this.phone = phone;
-        this.birthday = birthday;
+        this.dateOfBirth = dateOfBirth;
         this.address = address;
     }
 
@@ -28,19 +28,19 @@ public class Client {
     }
 
     public int getRG () {
-        return this.rg;
+        return this.RG;
     }
 
-    public void setRG (int rg) {
-        this.rg = rg;
+    public void setRG (int RG) {
+        this.RG = RG;
     }
 
     public long getCPF () {
-        return this.cpf;
+        return this.CPF;
     }
 
-    public void setCPF (long cpf) {
-        this.cpf = cpf;
+    public void setCPF (long CPF) {
+        this.CPF = CPF;
     }
 
     public Phone getPhone () {
@@ -51,12 +51,12 @@ public class Client {
         this.phone = phone;
     }
 
-    public Date getBirthday () {
-        return this.birthday;
+    public Date getDateOfBirth () {
+        return this.dateOfBirth;
     }
 
-    public void setBirthday (Date birthday) {
-        this.birthday = birthday;
+    public void setDateOfBirth (Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public Address getAddress () {
