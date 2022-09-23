@@ -7,17 +7,8 @@ public class Department {
     public Department () {}
 
     public Department (int code, String name) {
-        if (code >= 0) {
-            this.code = code;
-        } else {
-            System.out.println("O código precisa ser um número maior que zero");
-        }
-
-        if (name != null && !name.equals("")) {
-            this.name = name;
-        } else {
-            System.out.println("O nome inserido não pode estar vazio.");
-        }
+        this.setCode(code);
+        this.setName(name);
     }
 
     public int getCode () {
@@ -37,7 +28,9 @@ public class Department {
     }
 
     public void setName (String name) {
-        if (name != null && !name.equals("")) {
+        name = name.trim();
+
+        if (!name.equals(null) && !name.equals("")) {
             this.name = name;
         } else {
             System.out.println("O nome inserido não pode estar vazio.");
