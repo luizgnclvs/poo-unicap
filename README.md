@@ -9,4 +9,6 @@ Exercícios propostos pelo professor ao decorrer da disciplina de Programação 
 - Associação
 - Herança
 - Lista de Exercícios #1
+- Classe Abstrata
+- Interface
 - Lista de Exercícios #2
