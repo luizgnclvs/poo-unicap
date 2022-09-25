@@ -7,7 +7,7 @@ public class Test {
     public static void main(String[] args) {
         try (Scanner read = new Scanner(System.in)) {
             System.out.println("\n\nOlá! Seja bem-vindo.");
-
+''
             while (true) {
                 System.out.printf(
                     "%n%n%s %n%s %n%n%n\t%d - %s %n\t%d - %s %n\t%d - %s %n\t%d - %s %n\t%d - %s",
