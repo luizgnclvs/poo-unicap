@@ -68,6 +68,8 @@ public class Test {
                     vipOption = read.nextInt();
                 }
 
+                System.out.println();
+
                 if (vipOption == 1) {
                     UpperVIPArea ticket = new UpperVIPArea(300, 40, "Camarote Superior", 75);
 
@@ -81,6 +83,8 @@ public class Test {
                 }
             } else {
                 Regular ticket = new Regular(300);
+
+                System.out.println();
 
                 ticket.printTicket();
                 ticket.printValue();
@@ -96,6 +100,8 @@ public class Test {
                 System.out.print("\nOpção inválida! Tente novamente: ");
                 realEstateOption = read.nextInt();
             }
+
+            System.out.println();
 
             if (realEstateOption == 1) {
                 Old realEstate = new Old("Rua Cinco, 123", 150000, 20000);
