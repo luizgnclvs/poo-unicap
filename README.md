@@ -11,5 +11,5 @@ Exercícios propostos pelo professor ao decorrer da disciplina de Programação 
 - [Lista de Exercícios #1](https://github.com/luizgnclvs/poo-unicap/tree/main/Lista%20de%20Exerc%C3%ADcios%20%231)
 - [Classe Abstrata]
 - [Interface]
-- [Lista de Exercícios #2]
+- [Lista de Exercícios #2](https://github.com/luizgnclvs/poo-unicap/tree/main/Lista-de-Exerc%C3%ADcios%232)
 - [Sobreposição]

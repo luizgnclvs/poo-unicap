@@ -14,11 +14,11 @@ Implemente os diagramas de classe abaixo:
 
 **a)**
 
-![Diagrama de Classe 1](/Lista%20de%20Exerc%C3%ADcios%20%231/diagrama-1.jpg "Diagrama de Classe 1")
+![Diagrama de Classe 1](./assets/diagrama-1.jpg "Diagrama de Classe 1")
 
 **b)**
 
-![Diagrama de Classe 2](/Lista%20de%20Exerc%C3%ADcios%20%231/diagrama-2.jpg "Diagrama de Classe 2")
+![Diagrama de Classe 2](./assets/diagrama-2.jpg "Diagrama de Classe 2")
 
 ### **Exercício 3**
 
