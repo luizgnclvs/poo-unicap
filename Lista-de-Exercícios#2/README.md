@@ -20,7 +20,7 @@ A seguir, observe também a seguinte interface:
 
     interface FormaGeometrica {
         public double area( );
-        public double comprimento( );
+        public double perimetro( );
     }
 
 Construir as classes *Quadrado*, *Circulo* e *Retangulo* que implementam a interface *FormaGeometrica*. Implementar programa de testes que declara duas variáveis do tipo *FormaGeometrica* e instancia dois objetos um do tipo *Circulo* e outro do tipo *Quadrado*. Exibir a área e o comprimento dos objetos instanciados.
