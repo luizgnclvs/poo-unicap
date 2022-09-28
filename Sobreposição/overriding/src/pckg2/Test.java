@@ -7,7 +7,7 @@ public class Test {
         double value = 275.90;
 
         ClientInfo info1 = new NaturalPersonClientInfo("111.222.333-44");
-        ClientInfo info2 = new NaturalPersonClientInfo("123.456.789.-00");
+        ClientInfo info2 = new NaturalPersonClientInfo("123.456.789-00");
 
         CustomerLoyaltyClient client = new CustomerLoyaltyClient(
             "Luiz", "Rua 1", info1, bonus, "25/01/2023"

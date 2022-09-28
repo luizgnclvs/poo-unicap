@@ -5,7 +5,7 @@ public class Account {
     private int accountNumber;
     private double balance;
     private double clientSalary;
-    private double limit;
+    protected double limit;
 
     public Account () {}
 
@@ -54,18 +54,10 @@ public class Account {
     }
 
     public void setLimit (double limit) {
-        if (this.getClass().getSimpleName().equals("Account")) {
-            if (limit <= this.clientSalary) {
-                this.limit = limit;
-            } else {
-                System.out.println("O valor do limite não pode ser maior que o salário do cliente.");
-            }
+        if (limit <= this.clientSalary) {
+            this.limit = limit;
         } else {
-            if (limit <= (this.clientSalary * 3)) {
-                this.limit = limit;
-            } else {
-                System.out.println("O valor do limite não pode ser maior que três vezes o salário do cliente.");
-            }
+            System.out.println("O valor do limite não pode ser maior que o salário do cliente.");
         }
     }
 
