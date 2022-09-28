@@ -10,6 +10,6 @@ Exercícios propostos pelo professor ao decorrer da disciplina de Programação 
 - [Herança](https://github.com/luizgnclvs/poo-unicap/tree/main/Heran%C3%A7a)
 - [Lista de Exercícios #1](https://github.com/luizgnclvs/poo-unicap/tree/main/Lista%20de%20Exerc%C3%ADcios%20%231)
 - [Classe Abstrata](https://github.com/luizgnclvs/poo-unicap/tree/main/Classe%20Abstrata)
-- [Interface]
+- [Interface](https://github.com/luizgnclvs/poo-unicap/tree/main/Interface)
 - [Lista de Exercícios #2](https://github.com/luizgnclvs/poo-unicap/tree/main/Lista-de-Exerc%C3%ADcios%232)
 - [Sobreposição](https://github.com/luizgnclvs/poo-unicap/tree/main/Sobreposi%C3%A7%C3%A3o)
