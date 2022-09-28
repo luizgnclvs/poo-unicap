@@ -1,12 +1,12 @@
-package pckg;
+package example;
 
 public class Client {
     private String name;
-    private Address address;
+    private String address;
 
     public Client () {}
 
-    public Client (String name, Address address) {
+    public Client (String name, String address) {
         this.name = name;
         this.address = address;
     }
@@ -19,11 +19,11 @@ public class Client {
         this.name = name;
     }
 
-    public Address getAddress () {
+    public String getAddress () {
         return this.address;
     }
 
-    public void setAddress (Address address) {
+    public void setAddress (String address) {
         this.address = address;
     }
 }
