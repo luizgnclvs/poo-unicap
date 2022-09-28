@@ -19,6 +19,6 @@ public class Old extends RealEstate {
     }
 
     public void printPrice () {
-        System.out.printf("O preço final do imóvel é R$ %,.2f", super.getPrice() - this.discount);
+        System.out.printf("O preço final do imóvel é de R$ %,.2f", super.getPrice() - this.discount);
     }
 }

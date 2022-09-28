@@ -19,6 +19,6 @@ public class LowerVIPArea extends VIP {
     }
 
     public void printArea () {
-        System.out.println("Ingresso referente a área " + this.area);
+        System.out.println("Ingresso referente à área " + this.area);
     }
 }

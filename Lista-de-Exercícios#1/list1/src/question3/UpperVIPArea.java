@@ -29,11 +29,11 @@ public class UpperVIPArea extends VIP {
     }
 
     public void printArea () {
-        System.out.println("Ingresso referente a área " + this.area);
+        System.out.println("Ingresso referente à área " + this.area);
     }
 
     @Override
     public void printValue () {
-        System.out.printf("O valor do ingresso é R$ %,.2f", super.getValue() + super.getAdditionalValue() + this.areaAdditional);
+        System.out.printf("O ingresso custa R$ %,.2f", super.getValue() + super.getAdditionalValue() + this.areaAdditional);
     }
 }
