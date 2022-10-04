@@ -54,10 +54,18 @@ public class Account {
     }
 
     public void setLimit (double limit) {
-        if (limit <= this.clientSalary) {
+        if (this.isLimitValid(limit)) {
             this.limit = limit;
         } else {
-            System.out.println("O valor do limite não pode ser maior que o salário do cliente.");
+            System.out.println("Valor do limite é inválido.");
+        }
+    }
+
+    public boolean isLimitValid (double limmit) {
+        if (limit <= this.clientSalary) {
+            return true;
+        } else {
+            return false;
         }
     }
 

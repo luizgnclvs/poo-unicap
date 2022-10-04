@@ -9,11 +9,11 @@ public class SpecialAccount extends Account {
     }
 
     @Override
-    public void setLimit (double limit) {
-        if (limit <= (this.getClientSalary() * 3)) {
-            this.limit = limit;
+    public boolean isLimitValid (double limit) {
+        if (limit <= (super.getClientSalary() * 3)) {
+            return true;
         } else {
-            System.out.println("O valor do limite não pode ser maior que três vezes o salário do cliente.");
+            return false;
         }
     }
 }
