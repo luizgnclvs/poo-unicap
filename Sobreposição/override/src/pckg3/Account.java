@@ -5,7 +5,7 @@ public class Account {
     private int accountNumber;
     private double balance;
     private double clientSalary;
-    protected double limit;
+    private double limit;
 
     public Account () {}
 
@@ -61,7 +61,7 @@ public class Account {
         }
     }
 
-    public boolean isLimitValid (double limmit) {
+    public boolean isLimitValid (double limit) {
         if (limit <= this.clientSalary) {
             return true;
         } else {
