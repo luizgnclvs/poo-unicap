@@ -1,4 +1,4 @@
-# Classe Abstrata
+# Classes Abstratas
 
 ### **Exercício 1**
 
