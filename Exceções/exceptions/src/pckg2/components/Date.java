@@ -4,23 +4,23 @@ import pckg2.exceptions.InvalidDataException;
 import pckg2.exceptions.NegativeOrNullNumberException;
 
 public class Date {
-    private short year;
-    private short month;
-    private short day;
+    private int year;
+    private int month;
+    private int day;
 
     public Date () {}
 
-    public Date (short year, short month, short day) throws InvalidDataException {
+    public Date (int year, int month, int day) throws InvalidDataException {
         this.setYear(year);
         this.setMonth(month);
         this.setDay(day);
     }
 
-    public short getYear () {
+    public int getYear () {
         return this.year;
     }
 
-    public void setYear (short year) throws InvalidDataException {
+    public void setYear (int year) throws InvalidDataException {
         if (year < 1) {
             throw new InvalidDataException("O valor inserido não é um ano válido.");
         } else {
@@ -28,15 +28,15 @@ public class Date {
         }
     }
 
-    public short getMonth () {
+    public int getMonth () {
         return this.month;
     }
 
-    public void setMonth (short month) throws InvalidDataException {
-        if (month <= 0) {
+    public void setMonth (int month) throws InvalidDataException {
+        if (month < 1) {
             throw new NegativeOrNullNumberException();
         } else {
-            if (month < 1 || month > 12) {
+            if (month > 12) {
                 throw new InvalidDataException("O valor inserido não é um mês válido.");
             } else {
                 this.month = month;
@@ -44,19 +44,23 @@ public class Date {
         }
     }
 
-    public short getDay () {
+    public int getDay () {
         return this.day;
     }
 
-    public void setDay (short day) throws InvalidDataException {
-        if (day <= 0) {
+    public void setDay (int day) throws InvalidDataException {
+        if (day < 1) {
             throw new NegativeOrNullNumberException();
         } else {
-            if (day < 1 || day > 31) {
+            if (day > 31) {
                 throw new InvalidDataException("O valor inserido não é um dia válido.");
             } else {
                 this.day = day;
             }
         }
+    }
+
+    public String toString () {
+        return this.day + "/" + this.month + "/" + this.year;
     }
 }

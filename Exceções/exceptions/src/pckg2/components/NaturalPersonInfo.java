@@ -1,5 +1,6 @@
 package pckg2.components;
 
+import pckg2.Services;
 import pckg2.exceptions.InvalidDataException;
 import pckg2.exceptions.NegativeOrNullNumberException;
 
@@ -22,7 +23,7 @@ public class NaturalPersonInfo extends ClientInfo {
         if (CPF <= 0) {
             throw new NegativeOrNullNumberException();
         } else {
-            if (String.valueOf(CPF).length() == 11) {
+            if (Services.isNumberLengthValid(CPF, 11)) {
                 this.CPF = CPF;
             } else {
                 throw new InvalidDataException("O valor inserido não é um CPF válido");
@@ -38,11 +39,15 @@ public class NaturalPersonInfo extends ClientInfo {
         if (RG <= 0) {
             throw new NegativeOrNullNumberException();
         } else {
-            if (String.valueOf(RG).length() == 7) {
+            if (Services.isNumberLengthValid(RG, 7)) {
                 this.RG = RG;
             } else {
                 throw new InvalidDataException("O valor inserido não é um RG válido");
             }
         }
+    }
+
+    public String toString () {
+        return "CPF: " + this.CPF + " RG: " + this.RG;
     }
 }

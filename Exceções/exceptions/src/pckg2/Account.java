@@ -9,11 +9,19 @@ public class Account {
     private double limit;
     private Client client;
 
+    public static boolean isAccountNumberValid (int accountNumber) {
+        if (String.valueOf(accountNumber).length() == 8) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public Account (int number) throws InvalidDataException {
         if (number <= 0) {
             throw new NegativeOrNullNumberException();
         } else {
-            if (String.valueOf(number).length() == 8) {
+            if (isAccountNumberValid(number)) {
                 this.number = number;
             } else {
                 throw new InvalidDataException("O valor inserido não é um número de conta válido.");
@@ -21,11 +29,26 @@ public class Account {
         }
     }
 
+    public Account (int number, double balance, double limit) throws InvalidDataException {
+        if (number <= 0) {
+            throw new NegativeOrNullNumberException();
+        } else {
+            if (isAccountNumberValid(number)) {
+                this.number = number;
+            } else {
+                throw new InvalidDataException("O valor inserido não é um número de conta válido.");
+            }
+        }
+
+        this.balance = balance;
+        this.setLimit(limit);
+    }
+
     public Account (int number, double balance, double limit, Client client) throws InvalidDataException {
         if (number <= 0) {
             throw new NegativeOrNullNumberException();
         } else {
-            if (String.valueOf(number).length() == 8) {
+            if (isAccountNumberValid(number)) {
                 this.number = number;
             } else {
                 throw new InvalidDataException("O valor inserido não é um número de conta válido.");

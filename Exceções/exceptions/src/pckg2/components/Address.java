@@ -1,21 +1,22 @@
 package pckg2.components;
 
+import pckg2.Services;
 import pckg2.exceptions.InvalidDataException;
 import pckg2.exceptions.NegativeOrNullNumberException;
 
 public class Address {
     private CEP CEP;
-    private short number;
+    private int number;
     private String complement;
 
     public Address () {}
 
-    public Address (CEP CEP, short number) throws InvalidDataException {
+    public Address (CEP CEP, int number) throws InvalidDataException {
         this.setCEP(CEP);
         this.setNumber(number);
     }
 
-    public Address (CEP CEP, short number, String complement) throws InvalidDataException {
+    public Address (CEP CEP, int number, String complement) throws InvalidDataException {
         this.setCEP(CEP);
         this.setNumber(number);
         this.setComplement(complement);
@@ -29,11 +30,11 @@ public class Address {
         this.CEP = CEP;
     }
 
-    public short getNumber () {
+    public int getNumber () {
         return this.number;
     }
 
-    public void setNumber (short number) throws InvalidDataException {
+    public void setNumber (int number) throws InvalidDataException {
         if (number <= 0) {
             throw new NegativeOrNullNumberException();
         } else {
@@ -47,5 +48,13 @@ public class Address {
 
     public void setComplement (String complement) {
         this.complement = complement;
+    }
+
+    public String toString () {
+        if (Services.isStringValid(this.complement)) {
+            return this.CEP.getCode() + " - " + this.CEP.getStreet() + ", " + this.number + "\n" + this.CEP.getDistrict() + ",\n" + this.CEP.getCity() + ", " + this.CEP.getState().name();
+        } else {
+            return this.CEP.getCode() + " - " + this.CEP.getStreet() + ", " + this.number + " - " + this.complement + "\n" + this.CEP.getDistrict() + ",\n" + this.CEP.getCity() + ", " + this.CEP.getState().name();
+        }
     }
 }
