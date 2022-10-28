@@ -1,6 +1,5 @@
 package pckg2.components;
 
-import pckg2.Services;
 import pckg2.exceptions.InvalidDataException;
 import pckg2.exceptions.NegativeOrNullNumberException;
 
@@ -52,9 +51,9 @@ public class Address {
 
     public String toString () {
         if (Services.isStringValid(this.complement)) {
-            return this.CEP.getCode() + " - " + this.CEP.getStreet() + ", " + this.number + "\n" + this.CEP.getDistrict() + ",\n" + this.CEP.getCity() + ", " + this.CEP.getState().name();
+            return this.CEP.getCode() + " - " + this.CEP.getStreet() + ", " + this.number + "\n" + this.CEP.getDistrict() + ",\n" + this.CEP.getCity() + " - " + this.CEP.getState().name();
         } else {
-            return this.CEP.getCode() + " - " + this.CEP.getStreet() + ", " + this.number + " - " + this.complement + "\n" + this.CEP.getDistrict() + ",\n" + this.CEP.getCity() + ", " + this.CEP.getState().name();
+            return this.CEP.getCode() + " - " + this.CEP.getStreet() + ", " + this.number + " - " + this.complement + "\n" + this.CEP.getDistrict() + ", " + this.CEP.getCity() + " - " + this.CEP.getState().name();
         }
     }
 }

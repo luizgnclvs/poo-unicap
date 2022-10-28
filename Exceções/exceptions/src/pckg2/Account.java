@@ -1,5 +1,6 @@
 package pckg2;
 
+import pckg2.components.Services;
 import pckg2.exceptions.InvalidDataException;
 import pckg2.exceptions.NegativeOrNullNumberException;
 
@@ -9,22 +10,14 @@ public class Account {
     private double limit;
     private Client client;
 
-    public static boolean isAccountNumberValid (int accountNumber) {
-        if (String.valueOf(accountNumber).length() == 8) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public Account (int number) throws InvalidDataException {
         if (number <= 0) {
             throw new NegativeOrNullNumberException();
         } else {
-            if (isAccountNumberValid(number)) {
+            if (Services.isNumberLengthValid(number, 8)) {
                 this.number = number;
             } else {
-                throw new InvalidDataException("O valor inserido não é um número de conta válido.");
+                throw new InvalidDataException("O número de uma conta possui 8 dígitos.\nO valor inserido é um número de conta inválido.");
             }
         }
     }
@@ -33,7 +26,7 @@ public class Account {
         if (number <= 0) {
             throw new NegativeOrNullNumberException();
         } else {
-            if (isAccountNumberValid(number)) {
+            if (Services.isNumberLengthValid(number, 8)) {
                 this.number = number;
             } else {
                 throw new InvalidDataException("O valor inserido não é um número de conta válido.");
@@ -48,7 +41,7 @@ public class Account {
         if (number <= 0) {
             throw new NegativeOrNullNumberException();
         } else {
-            if (isAccountNumberValid(number)) {
+            if (Services.isNumberLengthValid(number, 8)) {
                 this.number = number;
             } else {
                 throw new InvalidDataException("O valor inserido não é um número de conta válido.");

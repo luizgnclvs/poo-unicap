@@ -1,6 +1,5 @@
 package pckg2.components;
 
-import pckg2.Services;
 import pckg2.exceptions.BlankTextException;
 import pckg2.exceptions.InvalidDataException;
 import pckg2.exceptions.NegativeOrNullNumberException;
@@ -48,9 +47,9 @@ public class CEP {
 
     public void setStreet (String street) throws InvalidDataException {
         if (Services.isStringValid(street)) {
-            throw new BlankTextException();
-        } else {
             this.street = street;
+        } else {
+            throw new BlankTextException();
         }
     }
 
@@ -60,9 +59,9 @@ public class CEP {
 
     public void setDistrict (String district) throws InvalidDataException {
         if (Services.isStringValid(district)) {
-            throw new BlankTextException();
-        } else {
             this.district = district;
+        } else {
+            throw new BlankTextException();
         }
     }
 
@@ -72,9 +71,9 @@ public class CEP {
 
     public void setCity (String city) throws InvalidDataException {
         if (Services.isStringValid(city)) {
-            throw new BlankTextException();
-        } else {
             this.city = city;
+        } else {
+            throw new BlankTextException();
         }
     }
 
