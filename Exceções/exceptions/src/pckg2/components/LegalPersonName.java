@@ -39,6 +39,6 @@ public class LegalPersonName extends Name {
     }
 
     public String toString () {
-        return "Razão Social: " + this.companyName + " / Nome Fantasia: " + this.tradeName;
+        return "Razão Social: " + this.companyName + " // Nome Fantasia: " + this.tradeName;
     }
 }

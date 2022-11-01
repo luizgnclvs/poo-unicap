@@ -36,7 +36,7 @@ public class CEP {
             if (Services.isNumberLengthValid(code, 8)) {
                 this.code = code;
             } else {
-                throw new InvalidDataException("O valor inserido não é um CP válido");
+                throw new InvalidDataException("O valor inserido não é um CEP válido");
             }
         }
     }

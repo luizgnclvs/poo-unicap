@@ -41,6 +41,7 @@ public class Services {
 
             System.out.print("Opção inválida! Tente novamente: ");
             option = read.nextInt();
+            read.nextLine();
         }
 
         System.out.println();

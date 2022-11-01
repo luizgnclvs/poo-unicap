@@ -1,6 +1,5 @@
 package pckg2;
 
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import pckg2.components.Address;
@@ -78,6 +77,7 @@ public class ClientRegistration {
             System.out.print("Sobrenome: ");
             ((NaturalPersonName)name).setSurname(read.nextLine());
         } else {
+            read.nextLine();
             System.out.print("Razão Social: ");
             ((LegalPersonName)name).setCompanyName(read.nextLine());
             System.out.print("Nome Fantasia: ");
@@ -140,17 +140,16 @@ public class ClientRegistration {
         read.nextLine();
         System.out.printf("\nSeu endereço possui complemento?\n(1) Sim (2) Não\n");
 
-        System.out.print("Opção: ");
+        System.out.print("\nOpção: ");
         int option = Services.validOption(1, 2);
 
         if (option == 1) {
             read.nextLine();
-            System.out.print("\nComplemento: ");
+            System.out.print("Complemento: ");
             address.setComplement(read.nextLine());
         } else {
-            System.out.println("\nOk.");
+            System.out.println("Ok.");
         }
-        read.nextLine();
 
         return address;
     }
@@ -158,7 +157,7 @@ public class ClientRegistration {
     public static CEP registerNewCEP () throws InvalidDataException {
         CEP CEP = new CEP();
 
-        System.out.println("CEP: ");
+        System.out.print("CEP: ");
         CEP.setCode(read.nextInt());
         read.nextLine();
         System.out.print("Logradouro: ");
@@ -167,17 +166,25 @@ public class ClientRegistration {
         CEP.setDistrict(read.nextLine());
         System.out.print("Cidade: ");
         CEP.setCity(read.nextLine());
-        System.out.print("Estado: ");
-
-        try {
-            CEP.setState(State.valueOf(read.next().toUpperCase()));
-        } catch (Exception exception) {
-            System.out.println("oi");
-            System.out.println("\n" + exception.getMessage());
-            System.out.print("\nTente novamente: ");
-            CEP.setState(State.valueOf(read.next().toUpperCase()));
-        }
+        System.out.print("Estado:\n");
+        CEP.setState(selectState());
 
         return CEP;
+    }
+
+    public static State selectState () {
+        int index = 1;
+
+        System.out.println();
+
+        for (State state : State.values()) {
+            System.out.println("\t" + index + "\t" + state.getFullName());
+            index++;
+        }
+
+        System.out.print("\nInsira o número correspondente ao estado qual deseja inserir: ");
+        int option = Services.validOption(1, 27);
+
+        return State.values()[option - 1];
     }
 }

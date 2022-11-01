@@ -2,7 +2,7 @@ package pckg2.exceptions;
 
 public class NonexistentElementException extends Exception {
 
-    public NonexistentElementException (String message) {
-        super(message);
+    public NonexistentElementException () {
+        super("Não foi encontrado nenhuma conta com essa identificação presente no repositório.");
     }
 }

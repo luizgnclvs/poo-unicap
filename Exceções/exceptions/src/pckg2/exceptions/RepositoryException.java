@@ -2,7 +2,7 @@ package pckg2.exceptions;
 
 public class RepositoryException extends Exception {
 
-    public RepositoryException (String message) {
-        super(message);
+    public RepositoryException () {
+        super("O repositório está lotado. Não será possível cadastrar mais nenhuma conta.");
     }
 }

@@ -1,7 +1,5 @@
 package pckg2;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 import pckg2.components.Services;
@@ -15,13 +13,16 @@ import pckg2.exceptions.RepositoryException;
 public class AccountRegistration {
     private static Scanner read = new Scanner(System.in);
 
-    private static Account [] repository = new Account [2];
+    private static Account [] repository = new Account [10];
     private static int slot = 0;
 
-    public static void insert (Account newAccount) throws RepositoryException, PreexistingElementException {
+    public static Account insert () throws RepositoryException, PreexistingElementException, InvalidDataException {
         if (slot >= repository.length) {
-            throw new RepositoryException("O repositório está lotado e por isso não foi possível cadastrar a nova conta.");
+            throw new RepositoryException();
         } else {
+            System.out.print("Certo!\nVamos iniciar o processo de cadastro.\n\nComeçaremos pelo número da conta: ");
+            Account newAccount = new Account(read.nextInt());
+
             for (Account account : repository) {
                 if (account != null) {
                     if (newAccount.getNumber() == account.getNumber()) {
@@ -30,31 +31,48 @@ public class AccountRegistration {
                 }
             }
 
-            repository[slot] = newAccount;
-            slot++;
+            return newAccount;
         }
     }
 
     public static void remove (int accountNumber) {
+        //Idealmente haveria uma chamada ao método search() para confirmar que a conta a ser deletada encontra-se no repositório.
+        //Entretanto, como dentro da main o método remove() só pode ser chamado após a execução bem-sucedida do método search(), essa implementação torna-se redundante.
+        Account [] cloneRepository = new Account [repository.length];
+
         for (int i = 0; i < repository.length; i++) {
-            if (repository[i] != null && accountNumber == repository[i].getNumber()) {
-                repository[i] = null;
-                slot--;
+            if (repository[i] != null) {
+                if (repository[i].getNumber() == accountNumber) {
+                    for (int j = i; j < repository.length - 1; j++) {
+                        if (repository[j] != null) {
+                            cloneRepository[j] = repository[j + 1];
+                        }
+                    }
+
+                    break;
+                } else {
+                    cloneRepository[i] = repository[i];
+                }
             }
         }
+
+        repository = cloneRepository;
+        slot--;
     }
 
     public static Account search (int accountNumber) throws NonexistentElementException {
         for (Account account : repository) {
-            if (account.getNumber() == accountNumber) {
-                return account;
+            if (account != null) {
+                if (account.getNumber() == accountNumber) {
+                    return account;
+                }
             }
         }
 
-        throw new NonexistentElementException("Não foi encontrado nenhuma conta com essa identificação.");
+        throw new NonexistentElementException();
     }
 
-    public static void printAccountSimple (Account account) {
+    public static void simplePrint (Account account) {
         System.out.printf(
             "%s: %d\t%s: R$ %.2f%n%s: %s",
             "Nº", account.getNumber(),
@@ -63,7 +81,7 @@ public class AccountRegistration {
         );
     }
 
-    public static void printAccount (Account account) {
+    public static void fullPrint (Account account) {
         //Salário foi propositalmente omitido e não esquecido.
         System.out.printf(
             "%s: %d\t%s: R$ %.2f\t%s: R$ %.2f%n%s: %s\t%s%n%s: %s\t%s: %s%n%s:%n%s",
@@ -79,25 +97,20 @@ public class AccountRegistration {
 
         while (true) {
             System.out.printf(
-                "%n%s%n%n\t%d - %s%n\t%d - %s%n\t%d - %s%n%n",
+                "%n%s%n%n\t%d - %s%n\t%d - %s%n\t%d - %s%n\t%d - %s%n%n",
                 "Qual operação você deseja realizar no repositório?",
-                1, "Inserir conta", 2, "Buscar conta", 3, "Sair"
+                1, "Inserir conta", 2, "Buscar conta", 3, "Exibir todas as contas", 4, "Sair"
             );
 
             System.out.print("Opção: ");
-            int option = Services.validOption(1, 3);
+            int option = Services.validOption(1, 4);
 
-            if (option == 3) {
+            if (option == 4) {
                 System.out.println("Obrigado pela atenção.\nAdeus.");
                 break;
             } else if (option == 1) {
-                System.out.print("Certo!\nVamos iniciar o processo de cadastro.\n\nComeçaremos pelo número da conta: ");
-
-                int accountNumber = read.nextInt();
-
                 try {
-                    Account account = new Account(accountNumber);
-                    insert(account);
+                    Account account = insert();
 
                     Client newClient = ClientRegistration.registerNewClient();
 
@@ -110,18 +123,30 @@ public class AccountRegistration {
                     account.setLimit(newClient.getSalary());
                     System.out.printf("\nLimite da conta: R$ %.2f", account.getLimit());
                     System.out.println();
+
+                    repository[slot] = account;
+                    slot++;
+
+                    System.out.println("Conta cadastrada com sucesso.");
+                } catch (RepositoryException exception) {
+                    System.out.println(exception.getMessage());
                 } catch (Exception exception) {
-                    System.out.println("\n" + exception.getMessage());
-                    remove(accountNumber);
+                    System.out.println();
+                    System.out.println(exception.getMessage());
                 }
-            } else {
+            } else if (option == 2) {
                 System.out.print("Certo.\nInsira o número da conta que deseja buscar: ");
 
                 int searchedAccountNumber = read.nextInt();
 
-                System.out.println();
+                boolean first = true;
 
                 while (!Services.isNumberLengthValid(searchedAccountNumber, 8)) {
+                    if (first) {
+                        System.out.println();
+                        first = false;
+                    }
+
                     System.out.print("O valor inserido não é um número de conta válido. Tente novamente: ");
                     searchedAccountNumber = read.nextInt();
                 }
@@ -130,27 +155,43 @@ public class AccountRegistration {
                     Account searchedAccount = search(searchedAccountNumber);
 
                     System.out.println();
-                    printAccountSimple(searchedAccount);
-                    System.out.println();
+                    simplePrint(searchedAccount);
 
-                    System.out.printf(
-                        "%n%s%n%n\t%d - %s%n\t%d - %s%n",
-                        "O que deseja fazer com a conta encontrada?",
-                        1, "Expandir", 2, "Voltar"
-                    );
+                    while (true) {
+                        System.out.printf(
+                            "%n%s%n%n\t%d - %s%n\t%d - %s%n\t%d - %s%n%n",
+                            "O que deseja fazer com a conta encontrada?",
+                            1, "Expandir", 2, "Excluir", 3, "Voltar"
+                        );
 
-                    option = Services.validOption(1, 2);
+                        System.out.print("Opção: ");
+                        option = Services.validOption(1, 3);
 
-                    if (option == 1) {
-                        System.out.println();
-                        printAccount(searchedAccount);
-                        System.out.println();
-                    } else {
-                        System.out.println();
+                        if (option == 1) {
+                            fullPrint(searchedAccount);
+                        } else if (option == 2) {
+                            remove(searchedAccountNumber);
+                            System.out.println("A conta foi removida com sucesso.");
+
+                            break;
+                        } else {
+                            break;
+                        }
                     }
-
                 } catch (NonexistentElementException exception) {
+                    System.out.println();
                     System.out.println(exception.getMessage());
+                }
+            } else {
+                int index = 1;
+
+                System.out.println("   CONTAS CADASTRADAS");
+
+                for (Account account : repository) {
+                    if (account != null) {
+                        System.out.println("Conta Nº " + index + ": \t" + account.getNumber());
+                        index++;
+                    }
                 }
             }
         }
