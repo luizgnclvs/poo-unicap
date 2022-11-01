@@ -13,4 +13,4 @@ Exercícios propostos pelo professor ao decorrer da disciplina de Programação 
 - [Interfaces](https://github.com/luizgnclvs/poo-unicap/tree/main/Interfaces)
 - [Lista de Exercícios #2](https://github.com/luizgnclvs/poo-unicap/tree/main/Lista-de-Exerc%C3%ADcios%232)
 - [Sobreposição](https://github.com/luizgnclvs/poo-unicap/tree/main/Sobreposi%C3%A7%C3%A3o)
-- [Exceções](htttps://github.com/luizgnclvs/poo-unicap/tree/main/Exce%C3%A7%C3%A4es)
+- [Exceções](https://github.com/luizgnclvs/poo-unicap/tree/main/Exce%C3%A7%C3%B5es)
