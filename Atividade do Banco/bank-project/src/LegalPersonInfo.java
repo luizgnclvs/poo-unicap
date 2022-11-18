@@ -1,7 +1,5 @@
-package pckg2.components;
-
-import pckg2.exceptions.InvalidDataException;
-import pckg2.exceptions.NegativeOrNullNumberException;
+import exceptions.InvalidDataException;
+import exceptions.NegativeOrNullNumberException;
 
 public class LegalPersonInfo extends ClientInfo {
     private long CNPJ;
@@ -23,12 +21,8 @@ public class LegalPersonInfo extends ClientInfo {
             if (Services.isNumberLengthValid(CNPJ, 14)) {
                 this.CNPJ = CNPJ;
             } else {
-                throw new InvalidDataException("O valor inserido não é um CNPJ válido");
+                throw new InvalidDataException("O valor '" + CNPJ + "' não é um CNPJ válido");
             }
         }
-    }
-
-    public String toString () {
-        return "CNPJ: " + this.CNPJ;
     }
 }

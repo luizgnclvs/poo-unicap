@@ -28,6 +28,6 @@ public enum State {
             }
         }
 
-        throw new NonexistentElementException("Não existe nenhuma opção com o nome inserido.");
+        throw new NonexistentElementException();
     }
 }

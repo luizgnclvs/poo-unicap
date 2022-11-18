@@ -1,20 +1,16 @@
-package pckg2.components;
-
-import pckg2.exceptions.InvalidDataException;
-import pckg2.exceptions.NegativeOrNullNumberException;
+import exceptions.InvalidDataException;
+import exceptions.NegativeOrNullNumberException;
 
 public class Phone {
     private int DDI;
     private int DDD;
     private int number;
 
-    public Phone () {
-        this.DDI = 55;
-    }
+    public Phone () {}
 
-    public Phone (int DDD, int number) throws InvalidDataException {
-        this.DDI = 55;
-        this.setDDD(DDD);
+    public Phone (int DDI, int DDD, int number) throws InvalidDataException {
+        this.setDDI(DDI);
+        this.setDDI(DDI);
         this.setNumber(number);
     }
 
@@ -22,7 +18,7 @@ public class Phone {
         return this.DDI;
     }
 
-    public void setDDI (int DDI) throws InvalidDataException {  
+    public void setDDI (int DDI) throws InvalidDataException {
         if (DDI <= 0) {
             throw new NegativeOrNullNumberException();
         } else {
