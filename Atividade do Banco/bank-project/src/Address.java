@@ -1,3 +1,4 @@
+import exceptions.BlankTextException;
 import exceptions.InvalidDataException;
 import exceptions.NegativeOrNullNumberException;
 
@@ -43,8 +44,12 @@ public class Address {
         return this.complement;
     }
 
-    public void setComplement (String complement) {
-        this.complement = complement;
+    public void setComplement (String complement) throws InvalidDataException {
+        if (Services.isStringValid(complement)) {
+            this.complement = complement;
+        } else {
+            throw new BlankTextException();
+        }
     }
 
     public String toString () {

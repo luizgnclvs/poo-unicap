@@ -1,16 +1,17 @@
 import java.util.ArrayList;
+import java.util.List;
 
 import exceptions.InsufficientBalanceException;
 import exceptions.InvalidDataException;
 import exceptions.NonexistentElementException;
 
 public abstract class Account {
-    final private Client owner;
-	final private int agency;
-	final private int number;
-	final private int digit;
+    private final Client owner;
+	private final List<String> transactions = new ArrayList<String>();
+	private final int number = (int) Math.floor(Math.random() * (1000000 - 100000 + 1) + 100000);
+	private final int digit = (int) Math.floor(Math.random() * (9 - 1 + 1) + 1);
+	private final int agency;
     private double balance;
-	private ArrayList<String> transactions;
 
     public Account (Client owner, int agency) throws InvalidDataException {
         this.owner = owner;
@@ -20,9 +21,6 @@ public abstract class Account {
         } else {
             throw new InvalidDataException("O valor '" + agency + "' não é um número válido de agência.");
         }
-
-        this.number = (int) Math.floor(Math.random() * (1000000 - 100000 + 1) + 100000);
-        this.digit = (int) Math.floor(Math.random() * (9 - 1 + 1) + 1);
     }
 
     public Account (Client owner, int agency, double balance) throws InvalidDataException {
@@ -34,9 +32,6 @@ public abstract class Account {
             throw new InvalidDataException("O valor '" + agency + "' não é um número válido de agência.");
         }
 
-        this.number = (int) Math.floor(Math.random() * (1000000 - 100000 + 1) + 100000);
-        this.digit = (int) Math.floor(Math.random() * (9 - 1 + 1) + 1);
-
         this.balance = balance;
     }
 
@@ -44,8 +39,8 @@ public abstract class Account {
         return this.owner;
     }
 
-    public int getAgency () {
-        return this.agency;
+    public List<String> getTransactions () {
+        return this.transactions;
     }
 
     public int getNumber () {
@@ -56,20 +51,16 @@ public abstract class Account {
         return this.digit;
     }
 
+    public int getAgency () {
+        return this.agency;
+    }
+
     public double getBalance () {
         return this.balance;
     }
 
     public void setBalance (double balance) {
         this.balance = balance;
-    }
-
-    public ArrayList<String> getTransactions () {
-        return this.transactions;
-    }
-
-    public void setTransactions (ArrayList<String> transactions) {
-        this.transactions = transactions;
     }
 
     public void deposit (double value) {
@@ -84,7 +75,7 @@ public abstract class Account {
         return value;
     }
 
-    public void transference (ArrayList<Account> accountRepository, int accountNumber, double value) throws InsufficientBalanceException, NonexistentElementException {
+    public void transference (List<Account> accountRepository, int accountNumber, double value) throws InsufficientBalanceException, NonexistentElementException {
         boolean isThereAccount = false;
 
         for (Account account : accountRepository) {

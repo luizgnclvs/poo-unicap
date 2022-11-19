@@ -17,7 +17,7 @@ public class Email extends ContactInfo {
     }
 
     public void setUser (String user) throws InvalidDataException {
-        if (Services.isStringValid(user)) {
+        if (Services.isStringValid(user) && user.equals("[a-zA-Z0-9]*")) {
             this.user = user;
         } else {
             throw new BlankTextException();
@@ -29,7 +29,7 @@ public class Email extends ContactInfo {
     }
 
     public void setProvider (String provider) throws InvalidDataException {
-        if (Services.isStringValid(provider)) {
+        if (Services.isStringValid(provider) && provider.equals("[a-zA-Z0-9]*")) {
             this.provider = provider;
         } else {
             throw new BlankTextException();

@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import exceptions.BlankTextException;
+
 public class Client {
     private String name;
     private ClientInfo personalInfo;
@@ -19,8 +21,12 @@ public class Client {
         return this.name;
     }
 
-    public void setName (String name) {
-        this.name = name;
+    public void setName (String name) throws BlankTextException {
+        if (Services.isStringValid(name)) {
+            this.name = name;
+        } else {
+            throw new BlankTextException();
+        }
     }
 
     public ClientInfo getPersonalInfo () {

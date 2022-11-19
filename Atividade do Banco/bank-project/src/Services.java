@@ -46,4 +46,157 @@ public class Services {
 
         return option;
     }
+
+    public static long catchInvalidData (long data, int length) {
+        data = catchInvalidData(data);
+
+        boolean isFirstLoop = true;
+
+        while (!isNumberLengthValid(data, length)) {
+            if (isFirstLoop) {
+                System.out.println();
+                isFirstLoop = false;
+            }
+
+            System.out.println("Tente novamente: ");
+            data = read.nextLong();
+        }
+
+        System.out.println();
+
+        return data;
+    }
+
+    public static int catchInvalidData (int data, int length) {
+        data = catchInvalidData(data);
+
+        boolean isFirstLoop = true;
+
+        while (!isNumberLengthValid(data, length)) {
+            if (isFirstLoop) {
+                System.out.println();
+                isFirstLoop = false;
+            }
+
+            System.out.println("Tente novamente: ");
+            data = read.nextInt();
+        }
+
+        System.out.println();
+
+        return data;
+    }
+
+    public static int catchInvalidData (int data, int rangeMin, int rangeMax) {
+        data = catchInvalidData(data);
+
+        int [] lengths = new int [rangeMax - rangeMin];
+
+        for (int i = 1; i <= lengths.length; i++) {
+            lengths[i] = rangeMin;
+            rangeMin++;
+        }
+
+        boolean isFirstLoop = true;
+
+        while (true) {
+            if (isFirstLoop) {
+                System.out.println();
+                isFirstLoop = false;
+            }
+
+            System.out.println("Tente novamente: ");
+            data = read.nextInt();
+
+            boolean isValid = false;
+
+            for (int i = 1; i <= lengths.length; i++) {
+                isValid = isNumberLengthValid(data, i);
+
+                if (isValid) {
+                    break;
+                }
+            }
+
+            if (isValid) {
+                break;
+            }
+        }
+
+        System.out.println();
+
+        return data;
+    }
+
+    public static long catchInvalidData (long data) {
+        boolean isFirstLoop = true;
+
+        while (data <= 0) {
+            if (isFirstLoop) {
+                System.out.println();
+                isFirstLoop = false;
+            }
+
+            System.out.println("Tente novamente: ");
+            data = read.nextLong();
+        }
+
+        System.out.println();
+
+        return data;
+    }
+
+    public static int catchInvalidData (int data) {
+        boolean isFirstLoop = true;
+
+        while (data <= 0) {
+            if (isFirstLoop) {
+                System.out.println();
+                isFirstLoop = false;
+            }
+
+            System.out.println("Tente novamente: ");
+            data = read.nextInt();
+        }
+
+        System.out.println();
+
+        return data;
+    }
+
+    public static String catchInvalidData (String data) {
+        boolean isFirstLoop = true;
+
+        while (!isStringValid(data)) {
+            if (isFirstLoop) {
+                System.out.println();
+                isFirstLoop = false;
+            }
+
+            System.out.println("Tente novamente: ");
+            data = read.nextLine();
+        }
+
+        System.out.println();
+
+        return data;
+    }
+
+    public static String catchInvalidData (String data, String regex) {
+        boolean isFirstLoop = true;
+
+        while (!isStringValid(data) && !data.equals(regex)) {
+            if (isFirstLoop) {
+                System.out.println();
+                isFirstLoop = false;
+            }
+
+            System.out.println("Tente novamente: ");
+            data = read.nextLine();
+        }
+
+        System.out.println();
+
+        return data;
+    }
 }

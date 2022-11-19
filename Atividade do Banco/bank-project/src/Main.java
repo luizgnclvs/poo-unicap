@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import exceptions.InvalidDataException;
+
 public class Main {
     private static Scanner read = new Scanner(System.in);
 
@@ -32,39 +34,7 @@ public class Main {
         }
     }
 
-    public static Account registerAccount () {
-        System.out.print("Certo!\nVamos iniciar o processo de cadastro.\n\nComeçaremos pelo seu registro.");
 
-        Client client = registerClient();
-
-        // System.out.printf(
-        //     "%s%n%s%n%n%s%n\t%d\t%s%n\t%d\t%s",
-        //     "Certo!", "Vamos iniciar o processo de cadastro.", "Qual tipo de conta você deseja abrir?",
-        //     1, "Conta Corrente", 2, "Conta Poupança"
-        // );
-
-        int type = Services.validOption(1, 2);
-
-        // Account newAccount;
-
-        // if (type == 1) {
-        //     newAccount = new CheckingAccount(null, type)
-        // }
-
-        // for (Account account : repository) {
-        //     if (account != null) {
-        //         if (newAccount.getNumber() == account.getNumber()) {
-        //             throw new PreexistingElementException("Uma conta com este mesmo número já encontra-se no repositório.");
-        //         }
-        //     }
-        // }
-
-        // return newAccount;
-    }
-
-    public static Client registerClient () {
-
-    }
 
     public static void main(String[] args) {
         System.out.println("\nOlá!\nSeja bem-vindo.");

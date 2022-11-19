@@ -1,7 +1,7 @@
 import exceptions.InvalidDataException;
 import exceptions.NegativeOrNullNumberException;
 
-public class Phone {
+public class Phone extends ContactInfo {
     private int DDI;
     private int DDD;
     private int number;
