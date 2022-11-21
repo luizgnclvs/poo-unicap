@@ -1,12 +1,15 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-
-import exceptions.InvalidDataException;
 
 public class Main {
     private static Scanner read = new Scanner(System.in);
 
-    private static ArrayList<Account> repository;
+    private static List<Account> repository = new ArrayList<Account>();
+
+    public static void insert () {
+        
+    }
 
     public static int menu () {
         System.out.printf(

@@ -21,6 +21,8 @@ public abstract class Account {
         } else {
             throw new InvalidDataException("O valor '" + agency + "' não é um número válido de agência.");
         }
+
+        this.balance = 0;
     }
 
     public Account (Client owner, int agency, double balance) throws InvalidDataException {

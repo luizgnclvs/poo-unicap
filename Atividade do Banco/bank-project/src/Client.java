@@ -1,27 +1,28 @@
 import java.util.ArrayList;
+import java.util.List;
 
 import exceptions.BlankTextException;
+import exceptions.InvalidDataException;
 
 public class Client {
     private String name;
     private ClientInfo personalInfo;
     private Address address;
-    private ArrayList<ContactInfo> contactInfo;
+    private final List<ContactInfo> contactInfo = new ArrayList<ContactInfo>();
 
     public Client () {}
 
-    public Client (String name, ClientInfo personalInfo, Address address, ArrayList<ContactInfo> contactInfo) {
+    public Client (String name, ClientInfo personalInfo, Address address) {
         this.name = name;
         this.personalInfo = personalInfo;
         this.address = address;
-        this.contactInfo = contactInfo;
     }
 
     public String getName () {
         return this.name;
     }
 
-    public void setName (String name) throws BlankTextException {
+    public void setName (String name) throws InvalidDataException {
         if (Services.isStringValid(name)) {
             this.name = name;
         } else {
@@ -45,12 +46,8 @@ public class Client {
         this.address = address;
     }
 
-    public ArrayList<ContactInfo> getContactInfo () {
+    public List<ContactInfo> getContactInfo () {
         return this.contactInfo;
-    }
-
-    public void setContactInfo (ArrayList<ContactInfo> contactInfo) {
-        this.contactInfo = contactInfo;
     }
 
     public void addContact (ContactInfo contact) {

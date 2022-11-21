@@ -1,46 +1,68 @@
+import java.util.List;
 import java.util.Scanner;
 
+import exceptions.BlankTextException;
 import exceptions.InvalidDataException;
 
 public class Register {
     private static final Scanner read = new Scanner(System.in);
 
-    public static Account registerAccount () {
+    public static Account registerAccount (List<Account> repository) {
         System.out.print("Certo!\nVamos iniciar o processo de cadastro.\n\nComeçaremos pelo seu registro.");
 
         Client client = registerClient();
 
-        // System.out.printf(
-        //     "%s%n%s%n%n%s%n\t%d\t%s%n\t%d\t%s",
-        //     "Certo!", "Vamos iniciar o processo de cadastro.", "Qual tipo de conta você deseja abrir?",
-        //     1, "Conta Corrente", 2, "Conta Poupança"
-        // );
+        System.out.printf(
+            "%n%s%n%s%n%n%s%n\t%d\t%s%n\t%d\t%s%n%s",
+            "Ótimo!", "Vamos iniciar o processo de cadastro de conta.", "Qual tipo de conta você deseja abrir?",
+            1, "Conta Corrente", 2, "Conta Poupança", "Tipo da conta: "
+        );
 
         int type = Services.validOption(1, 2);
 
-        // Account newAccount;
+        System.out.print("\nAgora informe o número da agência: ");
+        int agency = read.nextInt();
 
-        // if (type == 1) {
-        //     newAccount = new CheckingAccount(null, type)
-        // }
+        while (!Services.isNumberLengthValid(agency, 4)) {
+            System.out.print("\nNúmero inválido. Lembre que a agência é identificada por um número de quatro dígitos.\nTente novamaente: ");
+            agency = read.nextInt();
+        }
 
-        // for (Account account : repository) {
-        //     if (account != null) {
-        //         if (newAccount.getNumber() == account.getNumber()) {
-        //             throw new PreexistingElementException("Uma conta com este mesmo número já encontra-se no repositório.");
-        //         }
-        //     }
-        // }
+        System.out.println();
+
+        Account account;
+
+        if (type == 1) {
+            account = new CheckingAccount(client, agency);
+        } else {
+            account = new SavingsAccount(client, agency);
+        }
+
+        for (Account item : repository) {
+            if (item != null) {
+                if (account.getNumber() == item.getNumber()) {
+                    
+                }
+            }
+        }
 
         // return newAccount;
     }
 
-    public static Client registerClient () {
+    public static Client registerClient () throws InvalidDataException {
         Client client = new Client();
 
         System.out.print("\nInsira seu nome: ");
         String name = read.nextLine();
-        client.setName(name);
+
+        try {
+            client.setName(name);
+        } catch (InvalidDataException exception) {
+            System.out.println("\n" + exception.getMessage());
+            
+            name = Services.catchInvalidData(name);
+            client.setName(name);
+        }
 
         ClientInfo info;
 
@@ -63,7 +85,28 @@ public class Register {
         Address address = registerAddress();
         client.setAddress(address);
 
-        
+        System.out.printf(
+            "%n%s%n\t%d\t%s%n\t%d\t%s%n%s",
+            "Você deseja informar alguma informação de contato?", 1, "Sim", 2, "Não", "Opção: "
+        );
+
+        int option = Services.validOption(1, 2);
+
+        while (option == 1) {
+            ContactInfo contact = registerContactInfo();
+            client.addContact(contact);
+
+            System.out.printf(
+                "%n%s%n\t%d\t%s%n\t%d\t%n%s",
+                "Deseja cadastrar mais algum conatato?", 1, "Sim", 2, "Não", "Opção: "
+            );
+
+            option = Services.validOption(1, 2);
+        }
+
+        System.out.println("\nSeu registro foi cadastrado com sucesso.\n");
+
+        return client;
     }
 
     public static ClientInfo registerClientInfo (ClientInfo info) throws InvalidDataException{
@@ -148,6 +191,8 @@ public class Register {
             }
         }
 
+        System.out.println();
+
         return address;
     }
 
@@ -214,6 +259,8 @@ public class Register {
             CEP.setState(state);
         }
 
+        System.out.println();
+
         return CEP;
     }
 
@@ -228,15 +275,19 @@ public class Register {
         int option = Services.validOption(1, 2);
 
         if (option == 1) {
-            info = registerPhone(info)
+            info = new Phone();
+            info = registerPhone((Phone)info);
         } else {
-            info = registerEmail(info);
+            info = new Email();
+            info = registerEmail((Email)info);
         }
+
+        System.out.println();
 
         return info;
     }
 
-    public static ContactInfo registerPhone (ContactInfo info) throws InvalidDataException {
+    public static ContactInfo registerPhone (Phone info) throws InvalidDataException {
         info = new Phone();
 
         System.out.print("\nCerto. Primeiramente insira o DDI: +");
@@ -276,10 +327,12 @@ public class Register {
             ((Phone)info).setNumber(number);
         }
 
+        System.out.println();
+
         return info;
     }
 
-    public static ContactInfo registerEmail (ContactInfo info) throws InvalidDataException {
+    public static ContactInfo registerEmail (Email info) throws InvalidDataException {
         info = new Email();
 
         System.out.print("\nCerto. Insira o provedor do email: ");
@@ -305,6 +358,8 @@ public class Register {
             user = Services.catchInvalidData(user, "[a-zA-Z0-9]*");
             ((Email)info).setUser(user);
         }
+
+        System.out.println();
 
         return info;
     }
